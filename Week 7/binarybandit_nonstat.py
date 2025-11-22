@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ---------------------------------------------
-# 1. Non-Stationary 10-Armed Bandit Environment
-# ---------------------------------------------
 class NonStationaryBandit:
     def __init__(self, k=10):
         self.k = k
@@ -19,10 +16,6 @@ class NonStationaryBandit:
 
         return reward
 
-
-# -------------------------------------------------------
-# 2. Modified Epsilon-Greedy Agent (constant step size)
-# -------------------------------------------------------
 class EpsilonGreedyAgent:
     def __init__(self, k=10, epsilon=0.1, alpha=0.1):
         self.k = k
@@ -38,10 +31,6 @@ class EpsilonGreedyAgent:
     def update(self, action, reward):
         self.Q[action] += self.alpha * (reward - self.Q[action])
 
-
-# -------------------------
-# 3. Run the experiment
-# -------------------------
 steps = 10000
 bandit = NonStationaryBandit(k=10)
 agent = EpsilonGreedyAgent(k=10, epsilon=0.1, alpha=0.1)
@@ -57,9 +46,6 @@ for t in range(1, steps + 1):
     total_reward += reward
     avg_rewards.append(total_reward / t)
 
-# -------------------------
-# 4. Plot performance
-# -------------------------
 plt.figure(figsize=(12, 6))
 plt.plot(avg_rewards, label="Average Reward", linewidth=1.5)
 plt.xlabel("Steps")
